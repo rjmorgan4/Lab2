@@ -1,6 +1,6 @@
 ---
 title: "Lab 2"
-author: "Ryan Morgan"
+author: "Ryan Morgan, Amy Crawford"
 date: "February 2, 2017"
 output: pdf_document
 ---
@@ -120,10 +120,9 @@ Additionally, we have a truncated data set. For example, the movie _Split_ has o
 
 
 ```{r}
-length(unique(movieGross$Movie))
+top <- movies %>% slice(which(Movie %in% top$Movie))
 
-movieGross <- movies %>% select(Movie,Date,Gross)
-
-movieGross %>% ggplot(aes(x=Date, y=Gross, group=Movie)) + geom_line()
+top %>% ggplot(aes(x=Days, y=Total.Gross, group = Movie)) + geom_line() + xlim(0,300) + 
+  geom_text(data = top %>% filter(Days > 150 & Days < 158, Movie %in% c("Jurassic World", "Finding Dory", "The Secret Life of Pets", "Star Wars Ep. VII: The Forc…")), aes(label = Movie))
 
 ```
