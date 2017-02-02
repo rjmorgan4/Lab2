@@ -69,6 +69,7 @@ Weeks in Top 10:
 movies %>% group_by(Movie) %>% summarise(WeeksAtOne = sum(Rank<11)) %>% arrange(desc(WeeksAtOne)) %>% head(20)
 ```
 
+###### AMY WILL MAKE A TABLE to summarize these measures of success.
 
 
 #How long, on average, are movies in theaters? Also look at the median time. Try to figure out what contributes to the big difference.
