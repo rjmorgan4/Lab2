@@ -113,6 +113,8 @@ daysinBO %>%ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,300))
 ```
 So the reason the mean is so much larger than the median is the distribuiton is very skewed to the right. The outliers pull the mean up to an extrememly high value, while the median is relatively unaffected by the outliers. 
 
+Additionally, we have a truncated data set. For example, the movie _Split_ has only been in box office for two weeks. It hasn't had the chance to run it's course and show us how long it will stay. Because there are many movies that have been released quite recently in the data set, we see a pile up on the left side of the histogram.
+
 #What is the standard trajectory of a movie's total gross? Draw a plot and label some of the trajectories. 
 
 
