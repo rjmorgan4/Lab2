@@ -1,6 +1,6 @@
 ---
 title: "Lab 2"
-author: "Ryan Morgan, Amy Crawford"
+author: "Ryan Morgan, Amy Crawford, Gaurav Kandoi"
 date: "February 2, 2017"
 output: pdf_document
 ---
@@ -88,7 +88,7 @@ To try and see what might be contributing to such a large difference in mean and
 ```{r}
 daysinBO <- movies %>% group_by(Movie) %>% summarise(DaysInBoxOffice = max(Days))
 
-daysinBO %>%ggplot(aes(DaysInBoxOffice)) + geom_histogram()
+daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()
 ```
 Well then. There appears to be a huge outlier on the high end. We can look at what movies have had the longest run in the box office. 
 
@@ -104,12 +104,12 @@ It appears that movies that run this long are abnormal. We can try and find a cu
 Looking at our original histogram, it looks like most of the data is clustered around somewhere less than 1000
 
 ```{r}
-daysinBO %>%ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,1000))
+daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,1000))
 
 ```
 After zooming in, we still have a very skewed distribution. We can continue to zoom in and the distribution will still be skewed.
 ```{r}
-daysinBO %>%ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,300))
+daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,300))
 ```
 So the reason the mean is so much larger than the median is the distribuiton is very skewed to the right. The outliers pull the mean up to an extrememly high value, while the median is relatively unaffected by the outliers. 
 
