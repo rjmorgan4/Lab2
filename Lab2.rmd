@@ -69,7 +69,7 @@ Weeks in Top 10:
 wksIn10 <- movies %>% group_by(Movie) %>% summarise(WeeksAtOne = sum(Rank<11)) %>% arrange(desc(WeeksAtOne)) %>% head(10)
 ```
 
-The first ten movies who win each of these measures of success are summarized in the tables below.
+The top ten movies in each of these measures of success are summarized in the tables below.
 
 \begin{tabular}{lrrr}
 \hline
