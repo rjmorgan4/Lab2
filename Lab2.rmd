@@ -5,7 +5,7 @@ date: "February 2, 2017"
 output: pdf_document
 ---
 
-```{r, warning = F, messages = F}
+```{r, warning = F, message = F}
 movies <- read.csv(file=".//data//movies.csv")
 
 head(movies)
