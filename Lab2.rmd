@@ -144,12 +144,12 @@ It appears that movies that run this long are abnormal. We can try and find a cu
 
 Looking at our original histogram, it looks like most of the data is clustered around somewhere less than 1000
 
-```{r, warning = F}
+```{r, warning = F, message = F}
 daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,1000))
 
 ```
 After zooming in, we still have a very skewed distribution. We can continue to zoom in and the distribution will still be skewed.
-```{r, warning = F}
+```{r, warning = F, message = F}
 daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,300))
 ```
 So the reason the mean is so much larger than the median is the distribuiton is very skewed to the right. The outliers pull the mean up to an extrememly high value, while the median is relatively unaffected by the outliers. 
@@ -160,7 +160,7 @@ Additionally, we have a truncated data set. For example, the movie _Split_ has o
 
 
 
-```{r, warning = F}
+```{r, warning = F, message = F}
 top <- movies %>% 
   group_by(Movie) %>% 
   summarise(maxTotalGross = max(Total.Gross)) %>%
@@ -169,7 +169,7 @@ top <- movies %>%
 
 top <- movies %>% slice(which(Movie %in% top$Movie))
 
-top %>% ggplot(aes(x=Days, y=Total.Gross, group = Movie)) + geom_line() + xlim(0,300) + 
+top %>% ggplot(aes(x=Days, y=Total.Gross, group = Movie)) + geom_line() + xlim(0,250) + 
   geom_text(data = top %>% filter(Days > 150 & Days < 158, Movie %in% c("Jurassic World", "Finding Dory", "The Secret Life of Pets", "Star Wars Ep. VII: The Forc…")), aes(label = Movie))
 
 ```
