@@ -16,18 +16,18 @@ library(tidyverse)
 
 The structure of the data is 10,327 rows and 12 columns. The 12 variables are:
 
-Date: Year-month-day
-Rank
-Rank.Last.Week
-Days
-Movie
-Distributor
-Gross
-Change
-Total.Gross
-Release
-Theaters
-Per.Theater
+Date: Year-month-day  
+Rank  
+Rank.Last.Week  
+Days  
+Movie  
+Distributor  
+Gross  
+Change  
+Total.Gross  
+Release  
+Theaters  
+Per.Theater  
 
 #What were the most successful movies over the past two years? Make sure to define how you measure success. What can you say about movies that only came out recently?
 
@@ -120,6 +120,12 @@ Additionally, we have a truncated data set. For example, the movie _Split_ has o
 
 
 ```{r}
+top <- movies %>% 
+  group_by(Movie) %>% 
+  summarise(maxTotalGross = max(Total.Gross)) %>%
+  arrange(desc(maxTotalGross)) %>%
+  head(20)
+
 top <- movies %>% slice(which(Movie %in% top$Movie))
 
 top %>% ggplot(aes(x=Days, y=Total.Gross, group = Movie)) + geom_line() + xlim(0,300) + 
