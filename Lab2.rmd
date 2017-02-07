@@ -111,7 +111,7 @@ Rank      & Weeks at No. 1 &  Weeks in Top 5  &  Weeks in top 10  \\
 \hline
 \end{tabular}
 
-
+We can see from the tables that both of the recent Star Wars movies performed well in most of the measures of success. Furious 7, Jurrasic World, and Deadpool also appear on many of the lists.  Newer movies performed well in the _Average Weekly Rank_ measure. This was expected.
 
 #How long, on average, are movies in theaters? Also look at the median time. Try to figure out what contributes to the big difference.
 
@@ -134,7 +134,7 @@ daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()
 Well then. There appears to be a huge outlier on the high end. We can look at what movies have had the longest run in the box office. 
 
 ```{r}
-daysinBO %>% arrange(desc(DaysInBoxOffice)) %>% head(20)
+daysinBO %>% arrange(desc(DaysInBoxOffice)) %>% head(10)
 
 ```
 Apparently there are some movies that have been in theaters for more than 20,000 days. The 20th longest running film in the data set is "Time Changer," which has run for 4,945 days. This is more than 13 years. That would explain why the mean is so much larger than the median. 
@@ -144,12 +144,12 @@ It appears that movies that run this long are abnormal. We can try and find a cu
 
 Looking at our original histogram, it looks like most of the data is clustered around somewhere less than 1000
 
-```{r}
+```{r, warning = F}
 daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,1000))
 
 ```
 After zooming in, we still have a very skewed distribution. We can continue to zoom in and the distribution will still be skewed.
-```{r}
+```{r, warning = F}
 daysinBO %>% ggplot(aes(DaysInBoxOffice)) + geom_histogram()+xlim(c(0,300))
 ```
 So the reason the mean is so much larger than the median is the distribuiton is very skewed to the right. The outliers pull the mean up to an extrememly high value, while the median is relatively unaffected by the outliers. 
@@ -160,7 +160,7 @@ Additionally, we have a truncated data set. For example, the movie _Split_ has o
 
 
 
-```{r}
+```{r, warning = F}
 top <- movies %>% 
   group_by(Movie) %>% 
   summarise(maxTotalGross = max(Total.Gross)) %>%
