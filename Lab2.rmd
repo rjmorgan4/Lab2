@@ -6,12 +6,10 @@ output: pdf_document
 ---
 
 ```{r, warning = F, message = F}
-movies <- read.csv(file=".//data//movies.csv")
-
-head(movies)
-
 library(tidyverse)
 
+movies <- read.csv(file=".//data//movies.csv")
+head(movies)
 ```
 
 The structure of the data is 10,327 rows and 12 columns. The 12 variables are:
